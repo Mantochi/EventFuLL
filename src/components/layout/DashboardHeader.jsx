@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import DropdownItem from "./DropdownItem";
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
 import { ArrowLeftRight, BadgeInfo, LogOut } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 
 export default function DashboardHeader() {

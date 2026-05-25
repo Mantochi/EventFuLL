@@ -1,4 +1,4 @@
-import { motion,   AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { FaSearch, FaUserCircle, FaMapMarkerAlt,  FaChevronDown, } from "react-icons/fa";
 import { Plus, Heart, ReceiptText } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
