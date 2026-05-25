@@ -1,0 +1,84 @@
+.shadow-neon {
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.7), 0 0 20px rgba(75, 0, 130, 0.5);
+}
+
+.bg-starfield {
+  background: linear-gradient(135deg, #1E1E3D, #2A1F5A);
+  background-color: '#4B0082';
+}
+
+.card {
+  width: 256px;
+  height: 320px;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 75%;
+  background-color: #e5e7eb; /* Placeholder color */
+  clip-path: polygon(0 0, 100% 0, 85% 75%, 0 75%);
+}
+
+.custom-slanted-bg::before {
+  content: "";
+  position: absolute;
+  top: -32px ;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  transform: skewY(-6deg);
+  transform-origin: top left;
+  border-top-left-radius: 32rem;  /* Same as Tailwind's rounded-t-2xl */
+  border-top-right-radius: 32rem;
+  z-index: 1;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
