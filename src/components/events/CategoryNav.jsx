@@ -26,7 +26,7 @@ const containerVariants = {
 export default function CategoryNav({ filter, setFilter }) {
   return (
 
-    <motion.div
+    <div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -167,7 +167,7 @@ export default function CategoryNav({ filter, setFilter }) {
           </div>
         </div>
       </section>
-    </motion.div> 
+    </div> 
   );
 }
 

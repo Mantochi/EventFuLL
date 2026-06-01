@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownItem from "./DropdownItem";
 
+
 export default function Header() {
 
     const [menuOpen, setMenuOpen] = useState(false);
@@ -51,10 +52,7 @@ useEffect(() => {
 
      return (
 
-    <motion.div
-              initial={{ x: -100 }}
-              animate={{ x: 0 }} 
-          >
+   
     <header className="w-full fixed top-0 z-50 bg-white shadow-md backdrop-blur">
 
         <nav
@@ -166,6 +164,5 @@ useEffect(() => {
                           
             </nav>
     </header>
-    </motion.div>
   );
 }

@@ -30,7 +30,7 @@ useEffect(() => {
 
    return (
 
-    <motion.div
+    <div
               initial={{ x: -100 }}
               animate={{ x: 0 }} 
           >
@@ -91,6 +91,6 @@ useEffect(() => {
                       </div>
             </nav>
     </header>
-    </motion.div>
+    </div>
    );
 }  

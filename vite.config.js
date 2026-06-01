@@ -14,7 +14,6 @@ export default defineConfig({
   plugins: [react(), 
     tailwindcss(),
   ],
-    base:"/EventFuLL/",
    
     resolve: {
       alias: {
