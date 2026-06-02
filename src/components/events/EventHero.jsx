@@ -1,13 +1,4 @@
 // src/components/EventHero.jsx
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation, Autoplay } from 'swiper/modules';
-
-import hero from '@/assets/images/hero.jpg';
-import hero1 from '@/assets/images/hero1.jpg';
-import hero11 from '@/assets/images/hero11.jpg';
-
 import {
   Search,
   MapPin,
@@ -16,56 +7,19 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-const slides = [
-  {
-    img: hero,
-  },
-  {
-    img: hero11,
-  },
-  {
-    img: hero1,
-  },
-];
 
 export default function EventHero() {
   return (
-
-       <div>
-          <section className="pt-[110px] mt-15 lg:mt-0">
-          <div className="w-full shadow-md">
-      <Swiper
-        navigation
-        autoplay={{ delay: 4000 }}
-        modules={[Navigation, Autoplay]}
-        className="h-[280px] sm:h-[360px] md:h-[500px] overflow-hidden"
-      >
-
-      {slides.map((slide, idx) => (
-        <SwiperSlide key={idx}>
-
+    <div className="bg-gradient-to-r from-indigo-700 to-pink-500">
     
-           <img
-              src={slide.img}
-              alt='Event Hero Image'
-              loading='lazy'
-              className="w-full h-full bg-cover bg-center object-cover"
-          
-            />
-
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-    </section>
-
-
     {/* ================= HERO ================= */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16">
+     
+      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 ">
+
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           {/* Left */}
           <div>
-            <h2 className="text-5xl lg:text-7xl font-bold leading-tight">
+            <h2 className="text-black text-5xl lg:text-7xl font-bold leading-tight">
               Discover Events
               <br />
               <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">

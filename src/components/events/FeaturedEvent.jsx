@@ -1,20 +1,56 @@
- 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Autoplay } from 'swiper/modules';
+
+import hero from '@/assets/images/hero.jpg';
+import hero1 from '@/assets/images/hero1.jpg';
+import hero11 from '@/assets/images/hero11.jpg';
+
+const slides = [
+  {
+    img: hero,
+  },
+  {
+    img: hero11,
+  },
+  {
+    img: hero1,
+  },
+  {
+    img: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop",
+  },
+];
+
 export default function FeaturedEvent() {
  return (
  
       
+     
       <section className="relative z-10 mt-10">
         <div className="grid lg:grid-cols-4 gap-6 px-6 lg:px-10">
           {/* Left Banner */}
+          
           <div className="relative rounded-3xl overflow-hidden border border-white/10 h-[450px] w-full lg:col-span-3 ">
+          
+          <Swiper
+                  navigation
+                  autoplay={{ delay: 4000 }}
+                  modules={[Navigation, Autoplay]}
+                  className="h-[280px] sm:h-[360px] md:h-[500px] overflow-hidden"
+                >
+          
+                {slides.map((slide, idx) => (
+                  <SwiperSlide key={idx}>
             <img
-              src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop"
+              src={slide.img}
               alt=""
-              className="absolute w-full h-full object-cover"
+              className="absolute w-full h-full object-cover row-span-3"
             />
 
-            <div className="absolute inset-0" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
 
+               
             <div className="relative z-10 p-10 h-full flex flex-col justify-between">
               <div>
                 <span className="bg-purple-500/20 border border-purple-500/30 text-purple-300 text-xs px-4 py-2 rounded-full">
@@ -42,13 +78,14 @@ export default function FeaturedEvent() {
                 </button>
               </div>
             </div>
+            </SwiperSlide>
+            )) }
+            </Swiper>
           </div>
           
           
            {/* Organizers */}
-
           <div className="relative bg-white/5 border border-black/30 rounded-3xl p-5">
-            
             <div className="flex items-center justify-between">
               <h4 className="text-2xl font-semibold text-black">
                 Top Organizers
@@ -91,4 +128,5 @@ export default function FeaturedEvent() {
           </div>
         </div>
       </section>
- ) };
+  );
+}
