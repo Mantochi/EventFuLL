@@ -8,32 +8,32 @@ export default function MobileSidebar() {
   const buttons = [
     { 
       id: "events", 
-      icon: <ScanSearch size={30}/>,
+      icon: <ScanSearch size={35}/>,
        label: "Explore", 
        path: "/events"
      },
     { 
       id: "likes",
-       icon: <BadgePlus size={30}/>, 
+       icon: <BadgePlus size={35}/>, 
        label: "create", 
        path: "/dashboard"
        },
     {
        id: "home", 
-       icon: <Home size={35} className="absolute left-1/2 -translate-x-1/2 -top-5"/>, 
+       icon: <Home size={40}  />, 
        label: "Home", 
        path: "/" 
       },
     { 
       id: "tickets",
-       icon: <ReceiptText size={30}/>,
+       icon: <ReceiptText size={35}/>,
         label: "Tickets", 
         path: "/ticket"
        },
     { 
       id: "profile", 
-      icon: <UserRound size={30}/>, 
-      label: "Profile", 
+      icon: <UserRound size={35}/>, 
+      label: "finance", 
       path: "/profile" 
     },
   ];
@@ -50,13 +50,13 @@ export default function MobileSidebar() {
           >
             <div
               className={`transition-all duration-300 ${
-                active === btn.id ? "text-purple-600 scale-110" : "text-gray-600 hover:text-purple-500"
+                active === btn.id ? "text-purple-600 scale-110" : "text-gray-500 hover:text-purple-500"
               }`}
             >
               {btn.icon}
             </div>
             <span
-              className={`text-base mt-1 transition-colors duration-200 ${
+              className={`text-base mt-1 font-serif transition-colors duration-200 ${
                 active === btn.id ? "text-purple-600 font-medium" : "text-white/80"
               }`}
             >

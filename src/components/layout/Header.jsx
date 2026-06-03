@@ -53,7 +53,7 @@ useEffect(() => {
      return (
 
    
-    <header className="w-full fixed top-0 z-50 bg-white shadow-md backdrop-blur">
+    <header className="h-64 md:h-0 w-full rounded-b-3xl fixed top-0 z-50 bg-gradient-to-r from-indigo-700 to-pink-500 shadow-md backdrop-blur">
 
         <nav
             aria-label="Main Navigation"
@@ -63,7 +63,7 @@ useEffect(() => {
            <div className="flex items-center justify-between">       
             
                   {/* Logo on the left */}    
-                <h1 className="text-3xl font-bold text-purple-700">EventFuLL</h1>
+                <h1 className="text-3xl font-serif text-white">Event<span className="text-pink-500 font-bold">FuLL</span></h1>
 
 
                 
@@ -128,18 +128,18 @@ useEffect(() => {
                       </div>
            </div>
                                         {/* Search + Location Bar (Centered on large screens) */} 
-                            <div className="mt-4 lg:mt-0 lg:top-2 lg:absolute lg:left-1/2 lg:-translate-x-[90%] lg:w-[500px]">
+                            <div className="md:hidden mt-4 -bottom-7 absolute w-full left-0 px-6">
 
                                         {/* Search  */} 
-                              <div className="flex items-center gap-2 rounded-full border border-gray-300 px-4 py-4 shadow-sm">
+                              <div className="w-full flex items-center gap-2 rounded-full border border-gray-400 px-4 py-6 shadow-sm bg-white">
                                       <FaSearch className="text-purple-600 text-2xl" />
                                       <input
   
                                         type="text"
-                                        placeholder="Search events"
+                                        placeholder="Search events, concerts, places..."
                                         value={searchQuery}
                                         onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-full outline-none text-base font-medium text-gray-900 placeholder-gray-500 bg-transparent"
+                                        className="w-full px-4 outline-none text-base font-medium text-gray-900 placeholder-gray-500 bg-transparent"
                                        />
 
                               </div>

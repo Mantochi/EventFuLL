@@ -10,7 +10,7 @@ import {
 
 export default function EventHero() {
   return (
-    <div className="bg-gradient-to-r from-indigo-700 to-pink-500">
+    <div className="hidden md:block bg-gradient-to-r from-indigo-700 to-pink-500">
     
     {/* ================= HERO ================= */}
      

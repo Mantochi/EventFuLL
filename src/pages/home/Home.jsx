@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Header from "@/components/layout/Header"
 import EventHero from "@/components/events/EventHero"
 import CategoryNav from "@/components/events/CategoryNav"

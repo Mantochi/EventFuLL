@@ -1,5 +1,6 @@
 import { Mic, Music, Wine, Sparkles, Paintbrush, Church, Gamepad2, Briefcase, Volleyball, Laptop2Icon, LayoutGrid } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { useRef, useState } from "react";
 
 
 
@@ -54,22 +55,62 @@ const categories = [
           );
         }
 
-        export default function CategoryNav({ filter, setFilter }) {
+        export default function CategoryNav({ filter }) {
+
+          const marqueeRef = useRef(null);
+          const drag = useRef({ active: false, startX: 0, scrollLeft: 0});
+          const wrapperRef = useRef(null);
+          const [paused, setPaused] = useState(false);
+
+          //get live translateX from CSS
+
+          const getLiveOffset = () => {
+            if (!marqueeRef.current) return 0;
+            
+            const matrix = new DOMMatrix(window.getComputedStyle(marqueeRef.current).transform);
+            return matrix.m41;
+          };
+
+          const onDragStart = (clientX) => {
+            const offset = getLiveOffset();
+             marqueeRef.current.style.transform =`translateX(${offset}px)`;
+             marqueeRef.current.style.animationPlayState = "paused";
+             drag.current = { active: true, startX: clientX, startOffset: offset};
+             setPaused(true);
+          };
+
+          const onDragMove = (clientX) => {
+            if (!drag.current.active) return;
+
+            const delta = clientX - drag.current.startX;
+            marqueeRef.current.style.transform = `translateX(${drag.current.statrtOffset + delta}px)`;
+          };
+
+          const onDragEnd = () => {
+            drag.current.active = false;
+          };
 
           return (
-            <div className="w-full bg-white">      
+            <div className="w-full bg-white pt-48 md:pt-0">      
              <section className="py-10 max-w-8xl px-4">
 
-           <div className="flex items-center justify-between mb-8">
-              <h3 className="text-3xl text-black font-semibold">
+           <div className=" flex items-center justify-between mb-8">
+              <h3 className="hidden md:block text-3xl text-black font-semibold">
                 Browse by Category
                </h3>
            </div>
           
           {/* Mobile seamless marquee with duplicate list*/}
 
-        <div className='md:hidden overflow-hidden'>
-          <div className="flex gap-2 animate-marquee" >
+        <div 
+          ref={wrapperRef}
+          onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
+          onTouchMove={(e) => onDragMove(e.touches[0].clientX)}
+          onTouchEnd={onDragEnd}
+         className='md:hidden overflow-hidden pt-10 md:pt-0'>
+          <div 
+            ref={marqueeRef}
+            className={`flex gap-2 ${paused ? "" : "animate-marquee"}`} >
             {[...categories, ...categories].map((cat, i) => (
           
           <CategoryItem 
@@ -77,7 +118,7 @@ const categories = [
             key={`${cat.name}-${i}`}
             cat={cat}
             filter={filter}
-            setFilter={setFilter} />
+            />
           
           ))}
           </div>
@@ -89,11 +130,10 @@ const categories = [
       {categories.map((cat) => (
 
         <CategoryItem 
-           
             key={cat.name}
             cat={cat}
             filter={filter}
-            setFilter={setFilter} />
+           />
           
       ))}
     </div>
