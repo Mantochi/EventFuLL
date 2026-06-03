@@ -69,7 +69,7 @@ const categories = [
           {/* Mobile seamless marquee with duplicate list*/}
 
         <div className='md:hidden overflow-hidden'>
-          <div className="flex gap-3 animate-marquee" >
+          <div className="flex gap-2 animate-marquee" >
             {[...categories, ...categories].map((cat, i) => (
           
           <CategoryItem 
