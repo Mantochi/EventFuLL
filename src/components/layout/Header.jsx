@@ -11,9 +11,6 @@ export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    const [searchQuery, setSearchQuery] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
-
 
 // Close dropdown on outside click
 useEffect(() => {
@@ -32,28 +29,11 @@ useEffect(() => {
     };
   }, []);
 
-  useEffect(() => {
-  if (searchQuery.length < 2) return; // wait until user types at least 2 chars
-
-  const timeout = setTimeout(async () => {
-    try {
-      const res = await fetch(`/core/search/?q=${searchQuery}`);
-      const data = await res.json();
-      setSearchResults(data);
-    } catch (err) {
-      console.error(err);
-    }
-  }, 300); // 300ms debounce
-
-  return () => clearTimeout(timeout);
-}, [searchQuery]);
-
-
 
      return (
 
    
-    <header className="h-64 md:h-0 w-full rounded-b-3xl fixed top-0 z-50 bg-gradient-to-r from-indigo-700 to-pink-500 shadow-md backdrop-blur">
+    <header className="w-full fixed top-0 z-50 shadow-md backdrop-blur">
 
         <nav
             aria-label="Main Navigation"
@@ -63,7 +43,7 @@ useEffect(() => {
            <div className="flex items-center justify-between">       
             
                   {/* Logo on the left */}    
-                <h1 className="text-3xl font-serif text-white">Event<span className="text-pink-500 font-bold">FuLL</span></h1>
+                <h1 className="text-3xl font-serif text-black">Event<span className="text-pink-500 font-bold">FuLL</span></h1>
 
 
                 
@@ -127,39 +107,7 @@ useEffect(() => {
                              </div>
                       </div>
            </div>
-                                        {/* Search + Location Bar (Centered on large screens) */} 
-                            <div className="md:hidden mt-4 -bottom-7 absolute w-full left-0 px-6">
-
-                                        {/* Search  */} 
-                              <div className="w-full flex items-center gap-2 rounded-full border border-gray-400 px-4 py-6 shadow-sm bg-white">
-                                      <FaSearch className="text-purple-600 text-2xl" />
-                                      <input
-  
-                                        type="text"
-                                        placeholder="Search events, concerts, places..."
-                                        value={searchQuery}
-                                        onChange={(e) => setSearchQuery(e.target.value)}
-                                        className="w-full px-4 outline-none text-base font-medium text-gray-900 placeholder-gray-500 bg-transparent"
-                                       />
-
-                              </div>
-                            {/* Autocomplete */}
-                        {searchResults.length > 0 && (
-                     <ul className="absolute top-full left-0 right-0 max-h-60 bg-white/70 shadow-md rounded-xl mt-2 backdrop-blur-lg border border-white/40  z-[100]">
-                      {searchResults.map((event, idx) => (
-                     <li
-                        key={idx}
-                        className="px-4 py-2 text-sm hover:bg-white-50 cursor-pointer transition"
-                        onClick={() => {
-                        setSearchQuery(`${event.title} - ${event.city}`);
-                         setSearchResults([]);
-                       }}>
-                   <strong>{event.title}</strong> - {event.city}, {event.state} ({event.category})
-                    </li>
-                    ))}
-                 </ul>
-                )}
-               </div>
+                                
 
                           
             </nav>

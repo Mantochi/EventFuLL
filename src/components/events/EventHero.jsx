@@ -1,4 +1,7 @@
 // src/components/EventHero.jsx
+import { useState, useEffect } from "react";
+import { FaSearch } from "react-icons/fa";
+
 import {
   Search,
   MapPin,
@@ -9,12 +12,35 @@ import {
 
 
 export default function EventHero() {
+
+  const [searchQuery, setSearchQuery] = useState("");
+      const [searchResults, setSearchResults] = useState([]);
+
+
+      useEffect(() => {
+        
+        if (searchQuery.length < 2) return; // wait until user types at least 2 chars
+      
+        const timeout = setTimeout(async () => {
+          try {
+            const res = await fetch(`/core/search/?q=${searchQuery}`);
+            const data = await res.json();
+            setSearchResults(data);
+          } catch (err) {
+            console.error(err);
+          }
+        }, 300); // 300ms debounce
+      
+        return () => clearTimeout(timeout);
+      }, [searchQuery]);
+
+
   return (
-    <div className="hidden md:block bg-gradient-to-r from-indigo-700 to-pink-500">
+    <div className="relative rounded-b-2xl bg-gradient-to-r from-indigo-700 to-pink-700">
     
     {/* ================= HERO ================= */}
      
-      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 ">
+      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-20 ">
 
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           {/* Left */}
@@ -22,17 +48,54 @@ export default function EventHero() {
             <h2 className="text-black text-5xl lg:text-7xl font-bold leading-tight">
               Discover Events
               <br />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Happening Around You
               </span>
             </h2>
 
-            <p className="text-white/60 text-lg leading-8 mt-8 max-w-2xl">
-              Find concerts, workshops, meetups and more exciting events near
-              you or anywhere in the world.
+            <p className="text-white/60 text-xl leading-8 mt-8 max-w-2xl">
+              Find concerts, conferences, workshops, sports, meetups & more. <br />
+              Unforgettable experiences start here.
             </p>
 
+               {/* Search + Location Bar (Centered on large screens) */} 
+                    <div className="md:hidden -bottom-8 -translate-x-1/2  absolute w-full left-1/2 px-6">
+            
+                               {/* Search  */} 
+                      <div className="w-full flex items-center gap-2 rounded-full border border-gray-400 px-4 py-5 shadow-sm bg-white">
+                           <FaSearch className="text-purple-600 text-2xl" />
+                                  
+                                  <input
+                                    type="text"
+                                     placeholder="Search events, concerts, places..."
+                                     value={searchQuery}
+                                       onChange={(e) => setSearchQuery(e.target.value)}
+                                         className="w-full px-2 outline-none text-base font-medium text-gray-900 placeholder-gray-500 bg-transparent"
+                                      />
+            
+                        </div>
+
+                         {/* Autocomplete */}
+                        {searchResults.length > 0 && (
+                     <ul className="absolute top-full left-0 right-0 max-h-60 bg-white/70 shadow-md rounded-xl mt-2 backdrop-blur-lg border border-white/40  z-[100]">
+                      {searchResults.map((event, idx) => (
+                     <li
+                        key={idx}
+                        className="px-4 py-2 text-sm hover:bg-white-50 cursor-pointer transition"
+                        onClick={() => {
+                        setSearchQuery(`${event.title} - ${event.city}`);
+                         setSearchResults([]);
+                       }}>
+                   <strong>{event.title}</strong> - {event.city}, {event.state} ({event.category})
+                    </li>
+                    ))}
+                 </ul>
+                )}
+               </div>
+
             {/* Search Bar */}
+          <div className="hidden md:block">
+
             <div className="mt-10 bg-[#120423]/90 border border-white/10 rounded-2xl p-3 flex flex-col lg:flex-row gap-3">
               <div className="flex-1 flex items-center gap-3 px-4 h-14 bg-white/5 rounded-xl">
                 <Search size={18} className="text-white/40" />
@@ -60,8 +123,11 @@ export default function EventHero() {
                 <Search size={20} />
               </button>
             </div>
+            
 
             {/* Tags */}
+
+            
             <div className="flex flex-wrap gap-3 mt-8">
               {[
                 "Music",
@@ -80,9 +146,12 @@ export default function EventHero() {
               ))}
             </div>
           </div>
+          </div>
 
           {/* Right Hero Cards */}
-          <div className="grid grid-cols-[1fr_220px] gap-5">
+       <div className="hidden lg:block">
+
+          <div className=" grid grid-cols-[1fr_220px] gap-5">
             {/* Big Card */}
             <div className="relative rounded-3xl overflow-hidden border border-white/10 min-h-[420px]">
               <img
@@ -151,6 +220,7 @@ export default function EventHero() {
                   </div>
                 </div>
               ))}
+            </div>
             </div>
           </div>
         </div>
