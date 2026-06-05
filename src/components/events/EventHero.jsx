@@ -49,20 +49,20 @@ export default function EventHero() {
               Discover Events
               <br />
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Happening Around You
+                 Around You
               </span>
             </h2>
 
-            <p className="text-white/60 text-xl leading-8 mt-8 max-w-2xl">
+            <p className="text-white/60 text-xl leading-8 mt-8 max-w-2xl hidden md:block">
               Find concerts, conferences, workshops, sports, meetups & more. <br />
               Unforgettable experiences start here.
             </p>
 
                {/* Search + Location Bar (Centered on large screens) */} 
-                    <div className="md:hidden -bottom-8 -translate-x-1/2  absolute w-full left-1/2 px-6">
+                    <div className="md:hidden -bottom-8 -translate-x-1/2  absolute w-full left-1/2 px-4">
             
                                {/* Search  */} 
-                      <div className="w-full flex items-center gap-2 rounded-full border border-gray-400 px-4 py-5 shadow-sm bg-white">
+                      <div className="w-full flex items-center gap-2 rounded-full border border-gray-400 px-3 py-4 shadow-sm bg-white">
                            <FaSearch className="text-purple-600 text-2xl" />
                                   
                                   <input
