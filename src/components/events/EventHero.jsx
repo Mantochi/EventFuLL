@@ -36,19 +36,19 @@ export default function EventHero() {
 
 
   return (
-    <div className="relative rounded-b-2xl bg-gradient-to-r from-indigo-700 to-pink-700">
+    <div className="relative rounded-b-3xl bg-gradient-to-r from-indigo-700 to-pink-700">
     
     {/* ================= HERO ================= */}
      
-      <section className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-20 ">
+      <section className="relative z-10 max-w-7xl mx-auto lg:px-10 pt-16 pb-16 ">
 
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           {/* Left */}
           <div>
-            <h2 className="text-black text-5xl lg:text-7xl font-bold leading-tight">
+            <h2 className="text-black text-4xl lg:text-7xl font-bold leading-tight">
               Discover Events
               <br />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-serif">
                  Around You
               </span>
             </h2>
@@ -59,10 +59,10 @@ export default function EventHero() {
             </p>
 
                {/* Search + Location Bar (Centered on large screens) */} 
-                    <div className="md:hidden -bottom-8 -translate-x-1/2  absolute w-full left-1/2 px-4">
+                    <div className="md:hidden -bottom-6 -translate-x-1/2  absolute w-full left-1/2 px-10">
             
                                {/* Search  */} 
-                      <div className="w-full flex items-center gap-2 rounded-full border border-gray-400 px-3 py-4 shadow-sm bg-white">
+                      <div className="w-full flex items-center gap-2 rounded-3xl border border-gray-400 px-3 py-4 shadow-sm bg-white">
                            <FaSearch className="text-purple-600 text-2xl" />
                                   
                                   <input

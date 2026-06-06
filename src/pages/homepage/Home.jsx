@@ -8,7 +8,6 @@ import EventFilter from "@/components/events/EventFilter"
 import EventCard from "@/components/events/EventCard"
 import Footer from "@/components/layout/Footer"
 import MobileSidebar  from '@/components/layout/MobileSidebar';
-import LocationSelector  from '@/components/layout/LocationSelector';
 
 
 import african from '@/assets/images/african.png';
@@ -85,8 +84,6 @@ export default function Home() {
         </p>
       )}
       </motion.div>
-
-      <LocationSelector />
 
       <Features />
 

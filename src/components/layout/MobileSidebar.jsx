@@ -10,10 +10,10 @@ export default function MobileSidebar() {
       id: "events", 
       icon: <ScanSearch size={35}/>,
        label: "Explore", 
-       path: "/events"
+       path: "/event"
      },
     { 
-      id: "likes",
+      id: "create",
        icon: <BadgePlus size={35}/>, 
        label: "create", 
        path: "/dashboard"
@@ -33,7 +33,7 @@ export default function MobileSidebar() {
     { 
       id: "profile", 
       icon: <UserRound size={35}/>, 
-      label: "finance", 
+      label: "Profile", 
       path: "/profile" 
     },
   ];

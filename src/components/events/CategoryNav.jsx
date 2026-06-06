@@ -20,7 +20,7 @@ const categories = [
      bg: "bg-yellow-200", text: "text-yellow-500" 
      },
   { 
-    name: "CodeAbuja", icon: Laptop2Icon ,
+    name: "Tech", icon: Laptop2Icon ,
      bg: "bg-blue-200", text: "text-blue-500"
      },
   { 
@@ -35,10 +35,6 @@ const categories = [
     name: "Business", icon: Briefcase ,
      bg: "bg-lime-200", text: "text-lime-500"
      },
-  { 
-    name: "Food & Drink", icon: Wine ,
-     bg: "bg-green-200", text: "text-green-500"
-     },
    { 
     name: "Sport", icon: Volleyball ,
     bg: "bg-red-200", text: "text-red-500"
@@ -47,6 +43,10 @@ const categories = [
       name: "Concert", icon: Mic ,
       bg: "bg-amber-200", text: "text-amber-500"
     },
+     { 
+    name: "Chilling", icon: Wine ,
+     bg: "bg-green-200", text: "text-green-500"
+     },
     { 
       name: "more", icon: LayoutGrid ,
       bg: "bg-gray-200", text: "text-gray-500"
@@ -66,10 +66,10 @@ const categories = [
 
     <NavLink
           to={`/events?category=${cat.name}`}
-          className="flex flex-col items-center p-5 bg-white
+          className="flex flex-col items-center p-4 md:p-5 bg-white
                  transition-all duration-200 cursor-pointer hover:scale-105">
 
-      <div className={`p-4 rounded-3xl mb-3 border hover:scale-105 transition-all duration-200
+      <div className={`p-3 md:p-4 rounded-3xl mb-3 border hover:scale-105 transition-all duration-200
                    ${cat.bg} ${cat.text}`}>
 
                 <Icon className='w-8 h-8 md:w-12 md:h-12' />
